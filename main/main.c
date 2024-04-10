@@ -11,8 +11,7 @@
 
 /* user defined libraries */
 #include "wifi.h"
-// #include "http.h"
-// #include "uart.h"
+#include "http.h"
 
 static const char *TAG_MAIN = "MAIN";
 
@@ -21,5 +20,8 @@ void app_main(void) {
 
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
 
-    init_wifi();
+    if (init_wifi() == ESP_OK) {
+        httpd_handle_t server = init_http();
+    }
+
 }

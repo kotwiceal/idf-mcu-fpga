@@ -2,3 +2,4 @@
 .vscode
 build
 /main/config.h
+sdkconfig.old

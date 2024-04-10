@@ -70,9 +70,9 @@ esp_err_t wifi_init_sta(void) {
             .password = ESP_WIFI_PASS
         },
     };
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA) );
-    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config) );
-    ESP_ERROR_CHECK(esp_wifi_start() );
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
+    ESP_ERROR_CHECK(esp_wifi_start());
 
     ESP_LOGI(TAG_WIFI, "wifi_init_sta finished");
 
@@ -107,6 +107,10 @@ esp_err_t init_wifi(void) {
 
     // start wifi sta mode
     error = wifi_init_sta();
+
+    if (error == ESP_OK) {
+        ESP_LOGI(TAG_WIFI, "wifi is lauched");    
+    }
 
     return error;
 }
